@@ -12,33 +12,26 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
 import { GlobalStyle } from '../styles/global-styles';
 
-import { HomePage } from './pages/HomePage/Loadable';
-import { NotFoundPage } from './pages/NotFoundPage/Loadable';
-import { useTranslation } from 'react-i18next';
-import { Employees } from './pages/Employees';
+import { CounterPage } from './pages/CounterPage';
+import { NotFoundPage } from './pages/NotFoundPage';
+import { EmployeesPage } from './pages/EmployeesPage';
+import 'bootstrap/dist/css/bootstrap.css';
 
 export function App() {
-  const { i18n } = useTranslation();
   return (
     <BrowserRouter>
-      <Helmet
-        titleTemplate="%s - React Boilerplate"
-        defaultTitle="React Boilerplate"
-        htmlAttributes={{ lang: i18n.language }}
-      >
-        <meta name="description" content="A React Boilerplate application" />
-      </Helmet>
+      <Helmet titleTemplate="%s - HHG Test" defaultTitle="HHG Test" />
 
       <Switch>
         <Route
           exact
           path={process.env.PUBLIC_URL + '/counter'}
-          component={HomePage}
+          component={CounterPage}
         />
         <Route
           exact
           path={process.env.PUBLIC_URL + '/employees'}
-          component={Employees}
+          component={EmployeesPage}
         />
         <Route component={NotFoundPage} />
       </Switch>

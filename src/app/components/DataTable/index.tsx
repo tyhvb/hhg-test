@@ -1,28 +1,44 @@
-import React, { useEffect, useState } from 'react';
-import { DataGrid } from '@material-ui/data-grid';
+/**
+ *
+ * DataTable
+ *
+ */
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useDataTableSlice } from './slice';
+import { selectDataTable } from './slice/selectors';
+import { Table } from './Table';
 
-interface DataTableProps {
-  columns: { field: string; headerName: string; width: number }[];
-  pageSize: number;
-  url: string;
-}
+interface DataTableProps {}
+
+const columns = [
+  {
+    Header: 'Name',
+    accessor: 'name',
+  },
+  {
+    Header: 'Email',
+    accessor: 'email',
+  },
+  {
+    Header: 'Position',
+    accessor: 'position',
+  },
+];
 
 export const DataTable = (props: DataTableProps) => {
-  const [data, setData] = useState([]);
+  const { actions } = useDataTableSlice();
+  const dispatch = useDispatch();
 
-  const { columns, pageSize, url } = props;
+  const dataState = useSelector(selectDataTable);
 
   useEffect(() => {
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        setData(data);
-      });
-  }, [data, url]);
+    dispatch(actions.getData());
+  }, [actions, dispatch]);
 
   return (
-    <div style={{ margin: 'auto', width: '100%' }}>
-      <DataGrid columns={columns} rows={data} pageSize={pageSize} />
-    </div>
+    <>
+      <Table columns={columns} data={dataState.data} />
+    </>
   );
 };

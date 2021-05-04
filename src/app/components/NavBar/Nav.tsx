@@ -1,57 +1,42 @@
 import * as React from 'react';
 import styled from 'styled-components/macro';
-import { ReactComponent as DocumentationIcon } from './assets/documentation-icon.svg';
-import { ReactComponent as GithubIcon } from './assets/github-icon.svg';
+import { Button } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 
-export function Nav() {
+export const Nav = () => {
+  const history = useHistory();
+
+  const goToCounterPage = () => {
+    history.push('/counter');
+  };
+
+  const goToEmployeePage = () => {
+    history.push('/employees');
+  };
+
   return (
     <Wrapper>
-      <Item
-        href="https://cansahin.gitbook.io/react-boilerplate-cra-template/"
-        target="_blank"
-        title="Documentation Page"
-        rel="noopener noreferrer"
+      <Button
+        onClick={goToCounterPage}
+        className="mr-3"
+        size="small"
+        variant="outlined"
+        color="primary"
       >
-        <DocumentationIcon />
-        Documentation
-      </Item>
-      <Item
-        href="https://github.com/react-boilerplate/react-boilerplate-cra-template"
-        target="_blank"
-        title="Github Page"
-        rel="noopener noreferrer"
+        Go to counter page
+      </Button>
+      <Button
+        onClick={goToEmployeePage}
+        size="small"
+        variant="outlined"
+        color="primary"
       >
-        <GithubIcon />
-        Github
-      </Item>
+        Go to employee page
+      </Button>
     </Wrapper>
   );
-}
+};
 
 const Wrapper = styled.nav`
   display: flex;
-  margin-right: -1rem;
-`;
-
-const Item = styled.a`
-  color: ${p => p.theme.primary};
-  cursor: pointer;
-  text-decoration: none;
-  display: flex;
-  padding: 0.25rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  align-items: center;
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  &:active {
-    opacity: 0.4;
-  }
-
-  .icon {
-    margin-right: 0.25rem;
-  }
 `;
