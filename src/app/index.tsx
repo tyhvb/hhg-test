@@ -2,8 +2,6 @@
  *
  * App
  *
- * This component is the skeleton around the actual pages, and should only
- * contain code that should be seen on all pages. (e.g. navigation bar)
  */
 
 import * as React from 'react';
@@ -23,16 +21,9 @@ export function App() {
       <Helmet titleTemplate="%s - HHG Test" defaultTitle="HHG Test" />
 
       <Switch>
-        <Route
-          exact
-          path={process.env.PUBLIC_URL + '/counter'}
-          component={CounterPage}
-        />
-        <Route
-          exact
-          path={process.env.PUBLIC_URL + '/employees'}
-          component={EmployeesPage}
-        />
+        <Route path="/counter" component={CounterPage} />
+        <Route exact path="/employees" component={EmployeesPage} />
+        <Route path="/" component={CounterPage} />
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
