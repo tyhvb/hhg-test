@@ -3,12 +3,8 @@ import styled from 'styled-components/macro';
 export const PageWrapper = styled.div`
   box-sizing: content-box;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   display: flex;
   flex-direction: column;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
+  margin: 50px 15px 0;
 `;

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import { useTable, usePagination } from 'react-table';
+import { Table as BootstrapTable } from 'react-bootstrap';
 import Pagination from '@material-ui/lab/Pagination';
 
 export const Table = ({ columns, data }) => {
@@ -25,7 +26,7 @@ export const Table = ({ columns, data }) => {
   return (
     <>
       <Styles>
-        <table {...getTableProps()}>
+        <BootstrapTable bordered striped size="sm" {...getTableProps()}>
           <thead>
             {headerGroups.map(headerGroup => (
               <tr {...headerGroup.getHeaderGroupProps()}>
@@ -51,12 +52,14 @@ export const Table = ({ columns, data }) => {
               );
             })}
           </tbody>
-        </table>
+        </BootstrapTable>
       </Styles>
       <Pagination
+        className="align-self-start"
         onChange={(event, page) => {
           gotoPage(page - 1);
         }}
+        color="primary"
         showFirstButton
         showLastButton
         page={pageIndex + 1}
@@ -71,7 +74,8 @@ const Styles = styled.div`
 
   table {
     border-spacing: 0;
-    border: 1px solid black;
+    border: 3px solid black;
+    margin-bottom: 10px;
 
     tr {
       :last-child {
@@ -83,6 +87,7 @@ const Styles = styled.div`
 
     th,
     td {
+      width: 100vh;
       margin: 0;
       padding: 0.5rem;
       border-bottom: 1px solid black;

@@ -13,6 +13,8 @@ import { GlobalStyle } from '../styles/global-styles';
 import { CounterPage } from './pages/CounterPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { EmployeesPage } from './pages/EmployeesPage';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 export function App() {
@@ -27,6 +29,17 @@ export function App() {
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </BrowserRouter>
   );
 }

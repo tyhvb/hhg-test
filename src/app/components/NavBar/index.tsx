@@ -2,14 +2,11 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 import { StyleConstants } from 'styles/StyleConstants';
 import { Nav } from './Nav';
-import { PageWrapper } from '../PageWrapper';
 
 export const NavBar = () => {
   return (
     <Wrapper>
-      <PageWrapper>
-        <Nav />
-      </PageWrapper>
+      <Nav />
     </Wrapper>
   );
 };
@@ -23,4 +20,6 @@ const Wrapper = styled.header`
   width: 100%;
   background-color: ${p => p.theme.background};
   z-index: 2;
+  margin-left: 2rem;
+  margin-top: 2rem;
 `;

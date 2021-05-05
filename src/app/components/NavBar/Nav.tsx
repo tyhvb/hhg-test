@@ -16,7 +16,7 @@ export const Nav = () => {
 
   return (
     <Wrapper>
-      <Button
+      <ButtonWrapper
         onClick={goToCounterPage}
         className="mr-3"
         size="small"
@@ -24,19 +24,23 @@ export const Nav = () => {
         color="primary"
       >
         Go to counter page
-      </Button>
-      <Button
+      </ButtonWrapper>
+      <ButtonWrapper
         onClick={goToEmployeePage}
         size="small"
         variant="outlined"
         color="primary"
       >
         Go to employee page
-      </Button>
+      </ButtonWrapper>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.nav`
   display: flex;
+`;
+
+const ButtonWrapper = styled(Button)`
+  height: 35px;
 `;

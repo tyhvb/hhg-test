@@ -5,6 +5,7 @@
  */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { AddNewModal } from '../AddNewModal';
 import { useDataTableSlice } from './slice';
 import { selectDataTable } from './slice/selectors';
 import { Table } from './Table';
@@ -38,6 +39,7 @@ export const DataTable = (props: DataTableProps) => {
 
   return (
     <>
+      <AddNewModal />
       <Table columns={columns} data={dataState.data} />
     </>
   );

@@ -7,6 +7,7 @@ import { DataTableState } from './types';
 export const initialState: DataTableState = {
   loading: false,
   data: [],
+  updateEmployeeResult: false,
 };
 
 const slice = createSlice({
@@ -26,6 +27,12 @@ const slice = createSlice({
     },
     updateEmployee(state, action: PayloadAction<any>) {
       state.loading = false;
+    },
+    successUpdateEmployee(state) {
+      state.updateEmployeeResult = true;
+    },
+    resetUpdateEmployeeResult(state) {
+      state.updateEmployeeResult = false;
     },
   },
 });

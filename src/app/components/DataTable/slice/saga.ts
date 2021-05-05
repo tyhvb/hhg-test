@@ -25,6 +25,7 @@ function* updateEmployee(action) {
       })
       .then(response => response.data);
     yield put(actions.getData());
+    yield put(actions.successUpdateEmployee());
   } catch (errors) {
     yield put(actions.failGetData(errors));
   }
